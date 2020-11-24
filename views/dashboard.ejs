@@ -1,0 +1,97 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Final Project</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+        <link  type='text/css' rel="stylesheet" href="/styles.css"/>        
+    </head>
+
+    <body>
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <p class="navbar-item" id="webtitle">Carolina Connections</p>
+            </div>
+            
+      
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                          More
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="/users/delete">Delete Account</a>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="buttons">
+                    <a class="button is-info" href="/users/search">
+                        <ion-icon name="search-outline" class="icon is-small"></ion-icon>
+                    <strong>Search</strong>
+                    </a>
+                    <a class="button is-light" href="/users/logout">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>      
+        <div id="dash">
+            <div class="button is-info is-light">         
+                <ion-icon name="alert-circle-outline" class="icon" style="color: #3d83b3;"></ion-icon>
+                <p>Click "Edit" to create and update your profile.</p>
+            </div>  
+            <div class="dashdiv">   
+                <% if (user.name) { %>
+                    <h2><%= user.name %></h2>
+                <% }  else { %>     
+                    <h2>Your name here</h2>
+                <% } %>   
+            </div>     
+            <div class="dashdiv">
+                <label class="label">Looking for...</label>
+                <% if (user.purpose) { %>
+                    <p name="purpose"><%= user.purpose %></p>
+                <% } %>   
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <label class="label">Courses</label>
+                    <div>
+                        <ul>
+                        
+                            <li name="course1"><%= user.course1[0] %></li>
+                            <li name="course2"><%= user.course1[1] %></li>
+                            <li name="course3"><%= user.course1[2] %></li>
+                            <li name="course4"><%= user.course1[3] %></li>
+                            <li name="course5"><%= user.course1[4] %></li>
+                            <li name="course5"><%= user.course1[5] %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <label class="label">Organizations</label>
+                    <div>
+                        <ul>
+                            <li name="org1"><%= user.org1[0] %></li>
+                            <li name="org2"><%= user.org1[1] %></li>
+                            <li name="org3"><%= user.org1[2] %></li>
+                            <li name="org4"><%= user.org1[3] %></li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+            
+            <div class="cornerdiv">
+                <form action="/users/editdash">
+                    <button class="cornerbutton">Edit</button>
+                </form>
+            </div>  
+        </div>
+    </body>
+</html>

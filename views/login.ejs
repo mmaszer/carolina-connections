@@ -1,0 +1,36 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Final Project</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link  type='text/css' rel="stylesheet" href="/styles.css"/>         
+    </head>
+
+    <body>
+        <div id="login">
+            <div class="banner"><h1>Log In</h1></div>
+            <%- include ('./partials/messages') %>
+            <form action="/users/login" method="POST">
+            <div class="field">
+                <label class="label">Email Address</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="jdoe@live.unc.edu" name="email" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input class="input" type="password" name="password">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="longbutton">Login</button>
+            </div>
+            </form>
+            <a href="/users/register">Don't have an account? Create one.</a>
+            <br>
+        </div>  
+    </body>
+</html>

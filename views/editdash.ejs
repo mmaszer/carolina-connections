@@ -1,0 +1,74 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Final Project</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link  type='text/css' rel="stylesheet" href="/styles.css"/>      
+         
+    </head>
+
+    <body>
+        <div id="dash">
+            <form action="/users/dashboard" method="POST">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <p>Input your name as you would like it to appear to other users.</p>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.name %>" placeholder="Name" name="name">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">What are you looking for?</label>
+                    <p>Examples: a study buddy, someone to check homework answers with, etc.</p>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.purpose %>" name="purpose">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Courses</label>
+                    <p>Please list your classes by course code (e.g. COMP 426).</p>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.course1[0] %>" placeholder="Course 1" name="course1">
+                    </div>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.course1[1] %>" placeholder="Course 2" name="course2">
+                    </div>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.course1[2] %>" placeholder="Course 3" name="course3">
+                    </div>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.course1[3] %>" placeholder="Course 4" name="course4">
+                    </div>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.course1[4] %>" placeholder="Course 5" name="course5">
+                    </div>
+                    <div class="control">
+                      <input class="input" type="text" value="<%= user.course1[5] %>" placeholder="Course 6" name="course6">
+                    </div>
+                  </div>
+                <div class="field">
+                <label class="label">Organizations</label>
+                <p>List any clubs here.</p>
+                    <div class="control">
+                        <input class="input" type="text" value="<%= user.org1[0] %>" placeholder="Organization 1" name="org1">
+                    </div>
+                    <div class="control">
+                        <input class="input" type="text" value="<%= user.org1[2] %>" placeholder="Organization 2" name="org2">
+                    </div>
+                    <div class="control">
+                        <input class="input" type="text" value="<%= user.org1[2] %>" placeholder="Organization 3" name="org3">
+                    </div>
+                    <div class="control">
+                        <input class="input" type="text" value="<%= user.org1[3] %>" placeholder="Organization 4" name="org4">
+                    </div>
+                </div>
+                <div class="cornerdiv">
+                    <button class="cornerbutton" type="submit">Save</button>
+                </div>
+                
+            </form>                  
+        </div>     
+    </body>
+</html>

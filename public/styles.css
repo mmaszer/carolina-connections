@@ -1,0 +1,205 @@
+
+#login {
+    border-radius: 25px;
+    padding: 5%;
+    width: 60%;
+    background-color: #ffffff;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: -10%;
+}
+
+#dash {
+    border-radius: 25px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 60%;
+    background-color: #ffffff;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: -10%;
+    margin-bottom: 10%;
+}
+
+.longbutton {
+    border: none;
+    background-color: #474747;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 27px;
+    text-align: center;    
+}
+
+.button-cont {
+    position: relative;
+}
+
+.banner {
+    background-color:  #4B9CD3 ;
+    padding: 2%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+h2 {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+h3 {
+    padding-bottom: 2%;
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+html, body {
+    margin:0;
+    padding:0;
+    background-color: #F2F2F2;
+}
+
+.cornerdiv {
+    position: relative;
+    margin-top: 10%;
+}
+
+.cornerbutton {
+    border: none;
+    background-color: #E8E8E8;
+    color : #474747;
+    border-radius: 15px;
+    padding: 10px 27px;
+    text-align: center; 
+    position: absolute;
+    right:    0;
+    bottom:   0;
+}
+
+#corner {
+    position: absolute;
+    right:    0;
+    bottom:   0;
+}
+
+.buttongroup button{
+    float: right;
+    border: none;
+    background-color: #474747;
+    color: #ffffff;
+    border-radius: 15px;
+    padding: 10px 27px;
+    text-align: center;
+    margin-left: 5px;  
+    
+}
+
+.buttongroup {
+    margin-bottom: 50px;
+}
+
+.dashdiv {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.searchprof {
+    background-color: #ffffff;
+    width: 70%;
+    border-radius: 25px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-top: 2%;
+}
+
+#webtitle {
+    font-size: 27px;
+    color: #4B9CD3;
+}
+
+.note {
+    background-color: #4B9CD3;
+    padding: 2%;
+    color: white;
+    border-radius: 5px;
+    font-size: 90%;
+}
+
+.searchbar {
+    background-color: #ffffff;
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    padding-top: max(10%, 120px);
+    top: 0;
+    z-index: 1;
+    min-height: 200px;
+}
+
+#filtercont {
+    padding-left: 10%;
+    padding-bottom: 5%;
+}
+
+.track {
+    margin-top: max(10%, 120px);
+    margin-left: 37%;
+}
+
+.checkbox {
+    padding-right: 2%;
+}
+
+ion-icon {
+    color: #ffffff;
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+
+  
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    width: 90%;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+  }
+  
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
+
+#myInput {
+    width: 90%;
+}

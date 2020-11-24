@@ -1,0 +1,14 @@
+// MongoDB Playground
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// The current database to use.
+use('my_database');
+
+//db.getUser("mmaszer@live.unc.edu");
+
+let u = db.users.findOne({email: "mmaszer@live.unc.edu"});
+
+db.users.update({email: "mmaszer@live.unc.edu"}, {$set: {name: "Rae"}});
+
+//findOne({_id: "5fb8414273eb989f444cc2d4"});
+

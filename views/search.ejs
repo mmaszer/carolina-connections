@@ -1,0 +1,304 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Final Project</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
+        <link  type='text/css' rel="stylesheet" href="/styles.css"/>   
+          
+    </head>
+
+    <body>
+        <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <p class="navbar-item" id="webtitle">Carolina Connections</p>
+            </div>            
+            <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-info" href="/users/dashboard">
+                        <ion-icon name="person" class="icon is-small"></ion-icon>
+                    <strong>Profile</strong>
+                    </a>
+                    <a class="button is-light" href="/users/logout">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </nav>
+        <div class="searchbar">
+            <div id="filtercont">
+                    <h3>Courses</h3>
+                    <form autocomplete="off" action="/users/search" method="POST">
+                        <% if (user.course1[0]) { %>
+                            <label class="checkbox">
+                                <input name="c1" type="checkbox">
+                                <%= user.course1[0] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.course1[1]) { %>
+                            <label class="checkbox">
+                                <input name="c2" type="checkbox">
+                                <%= user.course1[1] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.course1[2]) { %>
+                            <label class="checkbox">
+                                <input name="c3" type="checkbox">
+                                <%= user.course1[2] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.course1[3]) { %>
+                            <label class="checkbox">
+                                <input name="c4" type="checkbox">
+                                <%= user.course1[3] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.course1[4]) { %>
+                            <label class="checkbox">
+                                <input name="c5" type="checkbox">
+                                <%= user.course1[4] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.course1[5]) { %>
+                            <label class="checkbox">
+                                <input name="c6" type="checkbox">
+                                <%= user.course1[5] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <h3>Organizations</h3>
+                        <% if (user.org1[0]) { %>
+                            <label class="checkbox">
+                                <input name="o1" type="checkbox">
+                                <%= user.org1[0] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.org1[1]) { %>
+                            <label class="checkbox">
+                                <input name="o2" type="checkbox">
+                                <%= user.org1[1] %>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.org1[2]) { %>
+                            <label class="checkbox">
+                                <input name="o3" type="checkbox">
+                                <%= user.org1[2]%>
+                            </label>
+                            <br>
+                        <% } %>
+                        <% if (user.org1[3]) { %>
+                            <label class="checkbox">
+                                <input name="o4" type="checkbox">
+                                <%= user.org1[3] %>
+                            </label>
+                        <% } %>
+                        <h3>Search By Keyword</h3>
+                        <div class="autocomplete" style="width:90%; margin-bottom: 10%;">
+                          <input class="input" id="myInput" type="text" name="p" placeholder="e.g. study group">
+                        </div>
+                        <button class="button is-info" id="filter" type="submit">
+                            <ion-icon name="enter-outline" class="icon"></ion-icon>
+                            <p>Filter</p>
+                        </button>
+                    </form>
+                    
+                    <script>
+                        function debounce(func, wait, immediate) {
+                            var timeout;
+                            return function executedFunction() {
+                                var context = this;
+                                var args = arguments;        
+                                var later = function() {
+                                timeout = null;
+                                if (!immediate) func.apply(context, args);
+                                };
+                                var callNow = immediate && !timeout;                              
+                                clearTimeout(timeout);
+                                timeout = setTimeout(later, wait);                                
+                                if (callNow) func.apply(context, args);
+                            };
+                        };
+                        function autocomplete(inp, arr) {
+                          /*the autocomplete function takes two arguments,
+                          the text field element and an array of possible autocompleted values:*/
+                          var currentFocus;
+                          /*execute a function when someone writes in the text field:*/
+                          let quick = debounce(function(e) {
+                            var a, b, i, val = this.value;
+                            /*close any already open lists of autocompleted values*/
+                            closeAllLists();
+                            if (!val) { return false;}
+                            currentFocus = -1;
+                            /*create a DIV element that will contain the items (values):*/
+                            a = document.createElement("DIV");
+                            a.setAttribute("id", this.id + "autocomplete-list");
+                            a.setAttribute("class", "autocomplete-items");
+                            /*append the DIV element as a child of the autocomplete container:*/
+                            this.parentNode.appendChild(a);
+                            /*for each item in the array...*/
+                            for (i = 0; i < arr.length; i++) {
+                                /*check if the item starts with the same letters as the text field value:*/
+                                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                                /*create a DIV element for each matching element:*/
+                                b = document.createElement("DIV");
+                                /*make the matching letters bold:*/
+                                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                                b.innerHTML += arr[i].substr(val.length);
+                                /*insert a input field that will hold the current array item's value:*/
+                                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                                /*execute a function when someone clicks on the item value (DIV element):*/
+                                b.addEventListener("click", function(e) {
+                                    /*insert the value for the autocomplete text field:*/
+                                    inp.value = this.getElementsByTagName("input")[0].value;
+                                    /*close the list of autocompleted values,
+                                    (or any other open lists of autocompleted values:*/
+                                    closeAllLists();
+                                });
+                                a.appendChild(b);
+                                }
+                            }
+                        }, 250);
+  
+                            /*execute a function when someone writes in the text field:*/
+                            inp.addEventListener("input", quick);
+                          /*execute a function presses a key on the keyboard:*/
+                          inp.addEventListener("keydown", function(e) {
+                              var x = document.getElementById(this.id + "autocomplete-list");
+                              if (x) x = x.getElementsByTagName("div");
+                              if (e.keyCode == 40) {
+                                /*If the arrow DOWN key is pressed,
+                                increase the currentFocus variable:*/
+                                currentFocus++;
+                                /*and and make the current item more visible:*/
+                                addActive(x);
+                              } else if (e.keyCode == 38) { //up
+                                /*If the arrow UP key is pressed,
+                                decrease the currentFocus variable:*/
+                                currentFocus--;
+                                /*and and make the current item more visible:*/
+                                addActive(x);
+                              } else if (e.keyCode == 13) {
+                                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                                e.preventDefault();
+                                if (currentFocus > -1) {
+                                  /*and simulate a click on the "active" item:*/
+                                  if (x) x[currentFocus].click();
+                                }
+                              }
+                          });
+                          function addActive(x) {
+                            /*a function to classify an item as "active":*/
+                            if (!x) return false;
+                            /*start by removing the "active" class on all items:*/
+                            removeActive(x);
+                            if (currentFocus >= x.length) currentFocus = 0;
+                            if (currentFocus < 0) currentFocus = (x.length - 1);
+                            /*add class "autocomplete-active":*/
+                            x[currentFocus].classList.add("autocomplete-active");
+                          }
+                          function removeActive(x) {
+                            /*a function to remove the "active" class from all autocomplete items:*/
+                            for (var i = 0; i < x.length; i++) {
+                              x[i].classList.remove("autocomplete-active");
+                            }
+                          }
+                          function closeAllLists(elmnt) {
+                            /*close all autocomplete lists in the document,
+                            except the one passed as an argument:*/
+                            var x = document.getElementsByClassName("autocomplete-items");
+                            for (var i = 0; i < x.length; i++) {
+                              if (elmnt != x[i] && elmnt != inp) {
+                                x[i].parentNode.removeChild(x[i]);
+                              }
+                            }
+                          }
+                          /*execute a function when someone clicks in the document:*/
+                          document.addEventListener("click", function (e) {
+                              closeAllLists(e.target);
+                          });
+                        }
+                        
+                        var vals = ["study", "study buddy", "homework", "homework help", "office hours", "office hours partner", "check answers", "answers", "friend", "homework group", "group", "study tips", "study group", "discussion group", "group project", "advice", "textbook", "reading", "notes", "study guide", "book", "help", "club"];
+                        
+                        /*initiate the autocomplete function on the "myInput" element, and pass along the array as possible autocomplete values:*/
+                        autocomplete(document.getElementById("myInput"), vals);
+                        </script> 
+                </div>          
+            </div>
+        </div>
+        <div class="track">
+            <% if (array.length == 0) { %>
+                <h3>No results. Try a new search.</h3>
+            <% } %>
+            <% let len = 50;
+            if (array.length < 50) {
+                len = array.length;
+            }
+            for (let i = 0; i < len; i++) { %>
+                <div class="searchprof">
+                    <div class="dashdiv">   
+                        <% if (array[i].name) { %>
+                            <h2><%= array[i].name %></h2>
+                        <% }  else { %>     
+                            <h2>your name here</h2>
+                        <% } %>   
+                    </div>     
+                    <div class="dashdiv">
+                        <label class="label">Looking for...</label>
+                        <% if (array[i].purpose) { %>
+                            <p name="purpose"><%= array[i].purpose %></p>
+                        <% } %>   
+                    </div>
+                    <div class ="columns">
+                        <div class="column">
+                            <label class="label">Courses</label>
+                            <div>
+                                <ul>
+                                    <li name="course1"><%= array[i].course1[0] %></li>
+                                    <li name="course2"><%= array[i].course1[1] %></li>
+                                    <li name="course3"><%= array[i].course1[2] %></li>
+                                    <li name="course4"><%= array[i].course1[3] %></li>
+                                    <li name="course5"><%= array[i].course1[4] %></li>
+                                    <li name="course5"><%= array[i].course1[5] %></li> 
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <label class="label">Organizations</label>
+                            <div>
+                                <ul>
+                                    <li name="org1"><%= array[i].org1[0] %></li>
+                                    <li name="org1"><%= array[i].org1[1] %></li>
+                                    <li name="org1"><%= array[i].org1[2] %></li>
+                                    <li name="org1"><%= array[i].org1[3] %></li>
+                                </ul>
+                            </div>
+                        </div> 
+                    </div> 
+                    <div class="cornerdiv">
+                        <form>
+                            <button class="button is-info is-light" id="corner">
+                                <ion-icon name="mail-outline" class="icon" style="color: #3d83b3;"></ion-icon>
+                                <% let address = "mailto:" + array[i].email + "?subject=CarolinaConnections message from " + user.name; %>
+                                <a target="_top" href=<%= address %> style="color: #3d83b3;">Contact</a>
+                            </button>
+                        </form>
+                    </div>        
+                </div>
+            <% } %>
+        </div>       
+    </body>
+</html>
