@@ -5,6 +5,8 @@ up a profile and list their classes, clubs, and what they are looking for on the
 that are in the same classes and clubs, and even search for students who have purposes on the site matching their own. When a user finds another student 
 they would like to connect with, they can hit the contact button on the student's profile and send them a message.
 
+API: https://mailboxlayer.com
+
 Credits:
 https://medium.com/better-programming/build-a-login-system-in-node-js-f1ba2abd19a
 https://www.w3schools.com/howto/howto_js_autocomplete.asp
