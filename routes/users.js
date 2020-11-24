@@ -252,17 +252,7 @@ router.post('/register',(req,res)=>{
         errors.push({msg : "Please fill in all fields"})
     }
     
-    axios.get('https://apilayer.net/api/check?access_key=e10375de5740db41650f7cdc8e5bdc24&email=' + email)
-    .then(response => {
-        if (response.data.format_valid == false) {
-            errors.push({msg : "That isn't a valid email address"});
-        }
-        console.log(response.data);
-        console.log(response.data.format_valid == false);
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    // API CALL HAS BEEN REMOVED FROM REPO TO AVOID EXPOSING KEY
     
     if (!email.includes('@live.unc.edu') && !email.includes('@unc.edu') && !email.includes('@cs.unc.edu')) {
         errors.push({msg : "Please use your UNC email address"});
